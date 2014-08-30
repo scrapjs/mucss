@@ -21,7 +21,8 @@
     "karma-commonjs-require": "0.0.2"
   },
   "scripts": {
-    "test": "karma start"
+    "test": "karma start",
+    "dev": "karma start --auto-watch --single-run=false"
   },
   "repository": {
     "type": "git",

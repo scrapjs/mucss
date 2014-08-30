@@ -3,12 +3,12 @@ var css = require('../index');
 describe('MicroCSS', function(){
 	it('Set translate3d', function(){
 		var a = document.createElement('div');
-		var value = 'translate3d(0,0,0)';
+		var value = 'translate3d(0px, 0px, 0px)';
 		css(a, {
 			'transform': value
 		});
 
-		assert.equal(a.style[css.prefix + 'transform'], value);
+		assert.equal(css(a,'transform'), value);
 	});
 
 	it('selection on/off', function(){

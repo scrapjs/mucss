@@ -151,8 +151,15 @@ css['offsets'] = function(el){
 function css(el, obj){
 	if (!el || !obj) return;
 	var propName;
+
+	//return value, if string passed
+	if (typeof obj === 'string') {
+		propName = fakeStyle[prefix + obj] !== undefined ? (prefix + obj) : obj;
+		return el.style[propName];
+	}
+
 	for (var name in obj){
-		propName = fakeStyle[prefix + name] !== undefined ? prefix + name : name;
+		propName = fakeStyle[prefix + name] !== undefined ? (prefix + name) : name;
 
 		//convert numbers to px
 		if (typeof obj[name] === 'number') obj[name] += 'px';
