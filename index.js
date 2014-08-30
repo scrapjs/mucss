@@ -4,11 +4,11 @@ module.exports = css;
 var win = window;
 
 
-/** Get clean style */
+/** Get clean style. */
 var fakeStyle = document.createElement('div').style;
 
 
-/** Detect vendor prefix */
+/** Detect vendor prefix. */
 var prefix = css['prefix'] = (function() {
 	var regex = /^(webkit|moz|ms|O|khtml)[A-Z]/, prop;
 	for (prop in fakeStyle) {
@@ -20,18 +20,15 @@ var prefix = css['prefix'] = (function() {
 }());
 
 
-/** Prevent you know what */
+/** Prevent you know what. */
 function pd(e){
 	e.preventDefault();
 }
 
 
 /**
- * Disable or Enable any selection possibilities for an element
- *
- * @param    {Element}   $el   Target to make unselectable
- *
- * @return   {[type]}   [description]
+ * Disable or Enable any selection possibilities for an element.
+ * @param    {Element}   $el   Target to make unselectable.
  */
 
 css['disableSelection'] = function($el){
@@ -55,11 +52,9 @@ css['enableSelection'] = function($el){
 
 
 /**
- * Return paddings of an element
- *
- * @param    {Element}   $el   An element to calc paddings
- *
- * @return   {Object}   Paddings object {top:n, bottom:n, left:n, right:n}
+ * Return paddings of an element.
+ * @param    {Element}   $el   An element to calc paddings.
+ * @return   {Object}   Paddings object `{top:n, bottom:n, left:n, right:n}`.
  */
 
 css['paddings'] = function($el){
@@ -75,11 +70,9 @@ css['paddings'] = function($el){
 
 
 /**
- * Return paddings of an element
- *
- * @param    {Element}   $el   An element to calc paddings
- *
- * @return   {Object}   Paddings object {top:n, bottom:n, left:n, right:n}
+ * Return margins of an element.
+ * @param    {Element}   $el   An element which to calc margins.
+ * @return   {Object}   Paddings object `{top:n, bottom:n, left:n, right:n}`.
  */
 
 css['margins'] = function($el){
@@ -94,7 +87,7 @@ css['margins'] = function($el){
 };
 
 
-/** Returns parsed css value */
+/** Returns parsed css value. */
 function parseValue(str){
 	str += '';
 	return ~~str.slice(0,-2);
@@ -103,11 +96,9 @@ css['parseValue'] = parseValue;
 
 
 /**
- * Return absolute offsets
- *
- * @param    {Element}   el   A target
- *
- * @return   {Object}   Offsets object with trbl, fromRight, fromLeft
+ * Return absolute offsets.
+ * @param    {Element}   el   A target.
+ * @return   {Object}   Offsets object with trbl, fromRight, fromLeft.
  */
 
 css['offsets'] = function(el){
@@ -145,36 +136,40 @@ css['offsets'] = function(el){
 
 
 /**
- * Apply styles to an element.
- * Main function returned from the module.
- *
- * @param    {Element}   el   An element to apply styles
- * @param    {Object}   obj   Set of style rules
- *
+ * Apply styles to an element. This is the module exports.
+ * @param    {Element}   el   An element to apply styles.
+ * @param    {Object|string}   obj   Set of style rules or string to get style rule.
  */
 
 function css(el, obj){
 	if (!el || !obj) return;
-	var propName;
 
 	//return value, if string passed
 	if (typeof obj === 'string') {
-		propName = fakeStyle[prefix + obj] !== undefined ? (prefix + obj) : obj;
-		return el.style[propName];
+		return el.style[prefixize(obj)];
 	}
 
 	for (var name in obj){
-		var uName = name[0].toUpperCase() + name.slice(1);
-
-		propName = fakeStyle[prefix + uName] !== undefined ? (prefix + uName) : name;
-
 		//convert numbers to px
 		if (typeof obj[name] === 'number') obj[name] += 'px';
 
 		if (obj[name]) {
-			el.style[propName] = obj[name];
+			el.style[prefixize(name)] = obj[name];
 		} else {
-			el.style[propName] = '';
+			el.style[prefixize(name)] = '';
 		}
 	}
+}
+
+
+/**
+ * Return prefixized prop name, if needed.
+ * @param    {string}   name   A property name.
+ * @return   {string}   Prefixed property name.
+ */
+
+function prefixize(name){
+	var uName = name[0].toUpperCase() + name.slice(1);
+	if (fakeStyle[prefix + uName] !== undefined) return prefix + uName;
+	return name;
 }
