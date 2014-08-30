@@ -1,6 +1,9 @@
 module.exports = css;
 
 
+var win = window;
+
+
 /** Get clean style */
 var fakeStyle = document.createElement('div').style;
 
@@ -63,10 +66,10 @@ css['paddings'] = function($el){
 	var style = getComputedStyle($el);
 
 	return {
-		top: parseCSSValue(style.paddingTop),
-		left: parseCSSValue(style.paddingLeft),
-		bottom: parseCSSValue(style.paddingBottom),
-		right: parseCSSValue(style.paddingRight)
+		top: parseValue(style.paddingTop),
+		left: parseValue(style.paddingLeft),
+		bottom: parseValue(style.paddingBottom),
+		right: parseValue(style.paddingRight)
 	};
 };
 
@@ -83,19 +86,20 @@ css['margins'] = function($el){
 	var style = getComputedStyle($el);
 
 	return {
-		top: parseCSSValue(style.marginTop),
-		left: parseCSSValue(style.marginLeft),
-		bottom: parseCSSValue(style.marginBottom),
-		right: parseCSSValue(style.marginRight)
+		top: parseValue(style.marginTop),
+		left: parseValue(style.marginLeft),
+		bottom: parseValue(style.marginBottom),
+		right: parseValue(style.marginRight)
 	};
 };
 
 
 /** Returns parsed css value */
-function parseCSSValue(str){
+function parseValue(str){
+	str += '';
 	return ~~str.slice(0,-2);
 }
-css['parseCSSValue'] = parseCSSValue;
+css['parseValue'] = parseValue;
 
 
 /**
@@ -107,15 +111,30 @@ css['parseCSSValue'] = parseCSSValue;
  */
 
 css['offsets'] = function(el){
-	if (el) return {
-		top: el.clientTop + win.pageYOffset,
-		left: el.clientLeft + win.pageXOffset,
+	if (!el) return;
+
+	var cRect;
+
+	try {
+		cRect = el.getBoundingClientRect();
+	} catch (e) {
+		cRect = {
+			top: el.clientTop,
+			left: el.clientLeft
+		};
+	}
+
+	var margins = css.margins(el);
+
+	return {
+		top: cRect.top + win.pageYOffset,
+		left: cRect.left + win.pageXOffset,
 		width: el.offsetWidth,
 		height: el.offsetHeight,
-		bottom: el.clientTop + win.pageYOffset + el.offsetHeight,
-		right: el.clientLeft + win.pageXOffset + el.offsetWidth,
-		fromRight: win.innerWidth - el.clientLeft - el.offsetWidth,
-		fromBottom: (win.innerHeight + win.pageYOffset - el.clientTop - el.offsetHeight)
+		bottom: cRect.top + win.pageYOffset + el.offsetHeight + margins.bottom,
+		right: cRect.left + win.pageXOffset + el.offsetWidth + margins.right,
+		fromRight: win.innerWidth - cRect.left - el.offsetWidth,
+		fromBottom: (win.innerHeight + win.pageYOffset - cRect.top - el.offsetHeight)
 	};
 };
 
@@ -134,6 +153,10 @@ function css(el, obj){
 	var propName;
 	for (var name in obj){
 		propName = fakeStyle[prefix + name] !== undefined ? prefix + name : name;
+
+		//convert numbers to px
+		if (typeof obj[name] === 'number') obj[name] += 'px';
+
 		if (obj[name]) {
 			el.style[propName] = obj[name];
 		} else {
