@@ -28,6 +28,7 @@ function pd(e){
 
 /**
  * Disable or Enable any selection possibilities for an element.
+ *
  * @param    {Element}   $el   Target to make unselectable.
  */
 
@@ -53,6 +54,7 @@ css['enableSelection'] = function($el){
 
 /**
  * Return paddings of an element.
+ *
  * @param    {Element}   $el   An element to calc paddings.
  * @return   {Object}   Paddings object `{top:n, bottom:n, left:n, right:n}`.
  */
@@ -71,6 +73,7 @@ css['paddings'] = function($el){
 
 /**
  * Return margins of an element.
+ *
  * @param    {Element}   $el   An element which to calc margins.
  * @return   {Object}   Paddings object `{top:n, bottom:n, left:n, right:n}`.
  */
@@ -97,6 +100,7 @@ css['parseValue'] = parseValue;
 
 /**
  * Return absolute offsets.
+ *
  * @param    {Element}   el   A target.
  * @return   {Object}   Offsets object with trbl, fromRight, fromLeft.
  */
@@ -137,6 +141,7 @@ css['offsets'] = function(el){
 
 /**
  * Apply styles to an element. This is the module exports.
+ *
  * @param    {Element}   el   An element to apply styles.
  * @param    {Object|string}   obj   Set of style rules or string to get style rule.
  */
@@ -164,6 +169,7 @@ function css(el, obj){
 
 /**
  * Return prefixized prop name, if needed.
+ *
  * @param    {string}   name   A property name.
  * @return   {string}   Prefixed property name.
  */
