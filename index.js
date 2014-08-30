@@ -164,7 +164,9 @@ function css(el, obj){
 	}
 
 	for (var name in obj){
-		propName = fakeStyle[prefix + name] !== undefined ? (prefix + name) : name;
+		var uName = name[0].toUpperCase() + name.slice(1);
+
+		propName = fakeStyle[prefix + uName] !== undefined ? (prefix + uName) : name;
 
 		//convert numbers to px
 		if (typeof obj[name] === 'number') obj[name] += 'px';
