@@ -7,10 +7,10 @@
     "test": "test"
   },
   "dependencies": {
-    "chai": "~1.9.1",
-    "phantomjs": "~1.9.7-15"
   },
   "devDependencies": {
+    "chai": "~1.9.1",
+    "phantomjs": "~1.9.7-15",
     "mocha": "~1.21.4",
     "karma-jasmine": "~0.1.5",
     "karma-chrome-launcher": "~0.1.4",
