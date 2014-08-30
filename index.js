@@ -60,7 +60,7 @@ css['enableSelection'] = function($el){
  */
 
 css['paddings'] = function($el){
-	var style = getComputedStyle($el);
+	var style = win.getComputedStyle($el);
 
 	return {
 		top: parseValue(style.paddingTop),
@@ -79,7 +79,7 @@ css['paddings'] = function($el){
  */
 
 css['margins'] = function($el){
-	var style = getComputedStyle($el);
+	var style = win.getComputedStyle($el);
 
 	return {
 		top: parseValue(style.marginTop),
@@ -106,7 +106,7 @@ css['parseValue'] = parseValue;
  */
 
 css['offsets'] = function(el){
-	if (!el) return;
+	if (!el) return {};
 
 	var cRect;
 
@@ -121,8 +121,8 @@ css['offsets'] = function(el){
 
 	//whether element is or is in fixed
 	var isNotFixed = 1, parentEl = el;
-	while (parentEl.nodeType === 1 && isNotFixed) {
-		isNotFixed = getComputedStyle(parentEl).position === 'fixed' ? 0 : 1;
+	while (parentEl instanceof Element && isNotFixed) {
+		isNotFixed = win.getComputedStyle(parentEl).position === 'fixed' ? 0 : 1;
 		parentEl = parentEl.parentNode;
 	}
 
