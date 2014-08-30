@@ -125,10 +125,10 @@ css['offsets'] = function(el){
 	}
 
 	//whether element is or is in fixed
-	var isNotFixed = 0, parentEl = el;
-	while (parentEl && isNotFixed) {
+	var isNotFixed = 1, parentEl = el;
+	while (parentEl.nodeType === 1 && isNotFixed) {
 		isNotFixed = getComputedStyle(parentEl).position === 'fixed' ? 0 : 1;
-		parentEl = el.parentNode;
+		parentEl = parentEl.parentNode;
 	}
 
 	return {
