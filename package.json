@@ -1,6 +1,6 @@
 {
   "name": "mucss",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "μCSS − jQuery's css function and utils: paddings, margins, offsets, parseCSSValue, disableSelection.",
   "main": "index.js",
   "directories": {
