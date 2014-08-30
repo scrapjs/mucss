@@ -124,17 +124,17 @@ css['offsets'] = function(el){
 		};
 	}
 
-	var margins = css.margins(el);
+	var isFixed = getComputedStyle(el).position === 'fixed' ? 0 : 1;
 
 	return {
-		top: cRect.top + win.pageYOffset,
-		left: cRect.left + win.pageXOffset,
+		top: cRect.top + (isFixed && win.pageYOffset),
+		left: cRect.left + (isFixed && win.pageXOffset),
 		width: el.offsetWidth,
 		height: el.offsetHeight,
-		bottom: cRect.top + win.pageYOffset + el.offsetHeight + margins.bottom,
-		right: cRect.left + win.pageXOffset + el.offsetWidth + margins.right,
+		bottom: cRect.top + (isFixed && win.pageYOffset) + el.offsetHeight,
+		right: cRect.left + (isFixed && win.pageXOffset) + el.offsetWidth,
 		fromRight: win.innerWidth - cRect.left - el.offsetWidth,
-		fromBottom: (win.innerHeight + win.pageYOffset - cRect.top - el.offsetHeight)
+		fromBottom: (win.innerHeight + (isFixed && win.pageYOffset) - cRect.top - el.offsetHeight)
 	};
 };
 

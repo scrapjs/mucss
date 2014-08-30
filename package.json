@@ -17,8 +17,7 @@
     "karma-opera-launcher": "~0.1.0",
     "karma-ie-launcher": "~0.1.5",
     "karma-safari-launcher": "~0.1.1",
-    "karma-commonjs": "0.0.11",
-    "karma-commonjs-require": "0.0.2"
+    "karma-commonjs": "0.0.11"
   },
   "scripts": {
     "test": "karma start",

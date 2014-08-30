@@ -65,8 +65,8 @@ describe('MicroCSS', function(){
 		var offsets = css.offsets(a);
 		assert.equal(offsets.top, 210);
 		assert.equal(offsets.left, 310);
-		assert.equal(offsets.bottom, 540);
-		assert.equal(offsets.right, 1140);
+		assert.equal(offsets.bottom, 530);
+		assert.equal(offsets.right, 1130);
 	});
 
 	it("parseValue", function(){
