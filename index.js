@@ -124,17 +124,22 @@ css['offsets'] = function(el){
 		};
 	}
 
-	var isFixed = getComputedStyle(el).position === 'fixed' ? 0 : 1;
+	//whether element is or is in fixed
+	var isNotFixed = 0, parentEl = el;
+	while (parentEl && isNotFixed) {
+		isNotFixed = getComputedStyle(parentEl).position === 'fixed' ? 0 : 1;
+		parentEl = el.parentNode;
+	}
 
 	return {
-		top: cRect.top + (isFixed && win.pageYOffset),
-		left: cRect.left + (isFixed && win.pageXOffset),
+		top: cRect.top + (isNotFixed && win.pageYOffset),
+		left: cRect.left + (isNotFixed && win.pageXOffset),
 		width: el.offsetWidth,
 		height: el.offsetHeight,
-		bottom: cRect.top + (isFixed && win.pageYOffset) + el.offsetHeight,
-		right: cRect.left + (isFixed && win.pageXOffset) + el.offsetWidth,
+		bottom: cRect.top + (isNotFixed && win.pageYOffset) + el.offsetHeight,
+		right: cRect.left + (isNotFixed && win.pageXOffset) + el.offsetWidth,
 		fromRight: win.innerWidth - cRect.left - el.offsetWidth,
-		fromBottom: (win.innerHeight + (isFixed && win.pageYOffset) - cRect.top - el.offsetHeight)
+		fromBottom: (win.innerHeight + (isNotFixed && win.pageYOffset) - cRect.top - el.offsetHeight)
 	};
 };
 
