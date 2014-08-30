@@ -1,13 +1,12 @@
 {
   "name": "mucss",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "μCSS − jQuery's css function and utils: paddings, margins, offsets, parseCSSValue, disableSelection.",
   "main": "index.js",
   "directories": {
     "test": "test"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "chai": "~1.9.1",
     "phantomjs": "~1.9.7-15",
