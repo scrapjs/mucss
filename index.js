@@ -120,22 +120,38 @@ css['offsets'] = function(el){
 	}
 
 	//whether element is or is in fixed
-	var isNotFixed = 1, parentEl = el;
-	while (parentEl instanceof Element && isNotFixed) {
-		isNotFixed = win.getComputedStyle(parentEl).position === 'fixed' ? 0 : 1;
-		parentEl = parentEl.parentNode;
-	}
+	var isFixed = css.isFixed(el);
+	var xOffset = isFixed ? 0 : win.pageXOffset;
+	var yOffset = isFixed ? 0 : win.pageYOffset;
 
 	return {
-		top: cRect.top + (isNotFixed && win.pageYOffset),
-		left: cRect.left + (isNotFixed && win.pageXOffset),
+		top: cRect.top + yOffset,
+		left: cRect.left + xOffset,
 		width: el.offsetWidth,
 		height: el.offsetHeight,
-		bottom: cRect.top + (isNotFixed && win.pageYOffset) + el.offsetHeight,
-		right: cRect.left + (isNotFixed && win.pageXOffset) + el.offsetWidth,
+		bottom: cRect.top + yOffset + el.offsetHeight,
+		right: cRect.left + xOffset + el.offsetWidth,
 		fromRight: win.innerWidth - cRect.left - el.offsetWidth,
-		fromBottom: (win.innerHeight + (isNotFixed && win.pageYOffset) - cRect.top - el.offsetHeight)
+		fromBottom: (win.innerHeight + yOffset - cRect.top - el.offsetHeight)
 	};
+};
+
+
+/**
+ * Detect whether element is placed to fixed container or fixed itself.
+ *
+ * @param {Element} el Element to detect fixedness.
+ *
+ * @return {boolean} Whether element is nested.
+ */
+
+css['isFixed'] = function (el) {
+	var parentEl = el;
+	while (parentEl instanceof Element) {
+		if (win.getComputedStyle(parentEl).position === 'fixed') return true;
+		parentEl = parentEl.offsetParent;
+	}
+	return false;
 };
 
 

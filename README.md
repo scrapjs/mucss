@@ -16,5 +16,6 @@ var css = require('mucss');
 * `css.paddings(el)` - get element paddings.
 * `css.margins(el)` - get element margins.
 * `css.parseValue(str)` - parse units value.
-* `css.enableSelection(el)`, `css.disableSelection(el)` - set element selectable.
-* `css.prefix` - current browser CSS prefix.
+* `css.enableSelection(el)`, `css.disableSelection(el)` - set & unset element selectable.
+* `css.prefix` - current browser CSS prefix, e. g. `'webkit'`
+* `css.isFixed(el)` - whether element is in fixed element or is fixed itself.

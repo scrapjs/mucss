@@ -87,4 +87,18 @@ describe('MicroCSS', function(){
 		css(a, {top: null});
 		assert.equal(a.style.top, '');
 	});
+
+	it("isFixed", function(){
+		var a = document.createElement('div');
+		a.innerHTML = '<div><div></div></div>';
+		a.style.position = 'fixed';
+		document.body.appendChild(a);
+
+		assert.equal(css.isFixed(a), true);
+		assert.equal(css.isFixed(a.firstChild), true);
+		assert.equal(css.isFixed(a.firstChild.firstChild), true);
+		assert.equal(css.isFixed(a.parentNode), false);
+		assert.equal(css.isFixed(document), false);
+		assert.equal(css.isFixed(window), false);
+	});
 })
