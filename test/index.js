@@ -1,4 +1,4 @@
-var css = require('../index');
+var css = require('../index.min.js');
 
 describe('MicroCSS', function(){
 	it('Set translate3d', function(){
@@ -99,6 +99,6 @@ describe('MicroCSS', function(){
 		assert.equal(css.isFixed(a.firstChild.firstChild), true);
 		assert.equal(css.isFixed(a.parentNode), false);
 		assert.equal(css.isFixed(document), false);
-		assert.equal(css.isFixed(window), false);
+		assert.equal(css.isFixed(window), true);
 	});
 })

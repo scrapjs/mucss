@@ -1,4 +1,4 @@
-module.exports = css;
+module['exports'] = css;
 
 
 var win = window;
@@ -120,7 +120,7 @@ css['offsets'] = function(el){
 	}
 
 	//whether element is or is in fixed
-	var isFixed = css.isFixed(el);
+	var isFixed = css['isFixed'](el);
 	var xOffset = isFixed ? 0 : win.pageXOffset;
 	var yOffset = isFixed ? 0 : win.pageYOffset;
 
@@ -140,14 +140,21 @@ css['offsets'] = function(el){
 /**
  * Detect whether element is placed to fixed container or fixed itself.
  *
- * @param {Element} el Element to detect fixedness.
+ * @param {(Element|Object)} el Element to detect fixedness.
  *
  * @return {boolean} Whether element is nested.
  */
 
 css['isFixed'] = function (el) {
 	var parentEl = el;
-	while (parentEl instanceof Element) {
+
+	//window is fixed, btw
+	if (el === win) return true;
+
+	//unlike the document
+	if (el === document) return false;
+
+	while (parentEl) {
 		if (win.getComputedStyle(parentEl).position === 'fixed') return true;
 		parentEl = parentEl.offsetParent;
 	}

@@ -23,7 +23,8 @@
   "scripts": {
     "test": "karma start",
     "dev": "karma start --auto-watch --single-run=false",
-    "min": "ccjs index.js --compilation_level=ADVANCED --warning_level=VERBOSE --process_common_js_modules --common_js_entry_module=index.js --summary_detail_level=3 --use_types_for_optimization --language_in=ECMASCRIPT5_STRICT > index.min.js"
+    "min": "ccjs index.js --compilation_level=ADVANCED --summary_detail_level=3 --use_types_for_optimization --language_in=ECMASCRIPT5_STRICT > index.min.js",
+    "build": "npm run min && npm test"
   },
   "repository": {
     "type": "git",
