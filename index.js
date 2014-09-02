@@ -169,23 +169,36 @@ css['isFixed'] = function (el) {
  * @param    {Object|string}   obj   Set of style rules or string to get style rule.
  */
 
+//TODO: recognize attr
 function css(el, obj){
 	if (!el || !obj) return;
 
+	var name, value;
+
 	//return value, if string passed
 	if (typeof obj === 'string') {
-		return el.style[prefixize(obj)];
+		name = prefixize(obj);
+
+		//set style, if value passed
+		if (arguments.length > 2) {
+			value = arguments[2] || '';
+
+			el.style[name] = value;
+
+			return;
+		}
+
+		//else return value return value
+		return el.style[name];
 	}
 
-	for (var name in obj){
+	for (name in obj){
 		//convert numbers to px
 		if (typeof obj[name] === 'number') obj[name] += 'px';
 
-		if (obj[name]) {
-			el.style[prefixize(name)] = obj[name];
-		} else {
-			el.style[prefixize(name)] = '';
-		}
+		value = obj[name] || '';
+
+		el.style[prefixize(name)] = value;
 	}
 }
 
@@ -199,6 +212,21 @@ function css(el, obj){
 
 function prefixize(name){
 	var uName = name[0].toUpperCase() + name.slice(1);
+	if (fakeStyle[name] !== undefined) return name;
 	if (fakeStyle[prefix + uName] !== undefined) return prefix + uName;
-	return name;
+	return '';
+}
+
+
+/**
+ * Return area parsed from any input
+ *
+ * @param {string|Element|Object|number} arg Selector, string, array[4], array[2], value, object or anything else
+ *
+ * @return {Array} Offsets rectangle [l,t,r,b]
+ */
+
+//TODO
+function getArea(arg){
+
 }
