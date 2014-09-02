@@ -86,6 +86,9 @@ describe('MicroCSS', function(){
 
 		css(a, {top: null});
 		assert.equal(a.style.top, '');
+
+		css(a, 'left', 200);
+		assert.equal(a.style.left, '200px');
 	});
 
 	it("isFixed", function(){

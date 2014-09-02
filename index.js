@@ -99,15 +99,16 @@ css['parseValue'] = parseValue;
 
 
 /**
- * Return absolute offsets.
+ * Return absolute offsets of any target passed
  *
  * @param    {Element}   el   A target.
  * @return   {Object}   Offsets object with trbl, fromRight, fromLeft.
  */
 
 css['offsets'] = function(el){
-	if (!el) return {};
+	if (!el) return false;
 
+	//calc client rect
 	var cRect;
 
 	try {
@@ -169,7 +170,6 @@ css['isFixed'] = function (el) {
  * @param    {Object|string}   obj   Set of style rules or string to get style rule.
  */
 
-//TODO: recognize attr
 function css(el, obj){
 	if (!el || !obj) return;
 
@@ -177,20 +177,19 @@ function css(el, obj){
 
 	//return value, if string passed
 	if (typeof obj === 'string') {
-		name = prefixize(obj);
+		name = obj;
 
-		//set style, if value passed
-		if (arguments.length > 2) {
-			value = arguments[2] || '';
-
-			el.style[name] = value;
-
-			return;
+		//return value, if no value passed
+		if (arguments.length < 3) {
+			return el.style[prefixize(name)];
 		}
 
-		//else return value return value
-		return el.style[name];
+		//set style, if value passed
+		value = arguments[2] || '';
+		obj = {};
+		obj[name] = value;
 	}
+
 
 	for (name in obj){
 		//convert numbers to px
@@ -215,18 +214,4 @@ function prefixize(name){
 	if (fakeStyle[name] !== undefined) return name;
 	if (fakeStyle[prefix + uName] !== undefined) return prefix + uName;
 	return '';
-}
-
-
-/**
- * Return area parsed from any input
- *
- * @param {string|Element|Object|number} arg Selector, string, array[4], array[2], value, object or anything else
- *
- * @return {Array} Offsets rectangle [l,t,r,b]
- */
-
-//TODO
-function getArea(arg){
-
 }
