@@ -105,7 +105,8 @@ css['parseValue'] = parseValue;
  * @return   {Object}   Offsets object with trbl, fromRight, fromLeft.
  */
 
-css['offsets'] = function(el){
+css['offsets'] = function(el, relativeTo){
+	//TODO: handle relativeTo arg
 	if (!el) return false;
 
 	//calc client rect
