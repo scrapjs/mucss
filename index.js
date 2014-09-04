@@ -102,7 +102,7 @@ css['parseValue'] = parseValue;
  * Return absolute offsets of any target passed
  *
  * @param    {Element}   el   A target.
- * @return   {Object}   Offsets object with trbl, fromRight, fromLeft.
+ * @return   {Object}   Offsets object with trbl, fromBottom, fromLeft.
  */
 
 css['offsets'] = function(el, relativeTo){
@@ -132,9 +132,7 @@ css['offsets'] = function(el, relativeTo){
 		width: el.offsetWidth,
 		height: el.offsetHeight,
 		bottom: cRect.top + yOffset + el.offsetHeight,
-		right: cRect.left + xOffset + el.offsetWidth,
-		fromRight: win.innerWidth - cRect.left - el.offsetWidth,
-		fromBottom: (win.innerHeight + yOffset - cRect.top - el.offsetHeight)
+		right: cRect.left + xOffset + el.offsetWidth
 	};
 };
 
