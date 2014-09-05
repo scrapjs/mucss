@@ -93,7 +93,7 @@ css['margins'] = function($el){
 /** Returns parsed css value. */
 function parseValue(str){
 	str += '';
-	return ~~str.slice(0,-2);
+	return parseFloat(str.slice(0,-2)) || 0;
 }
 css['parseValue'] = parseValue;
 

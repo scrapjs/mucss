@@ -1,4 +1,4 @@
-var css = require('../index.min.js');
+var css = require('../index.js');
 
 describe('MicroCSS', function(){
 	it('Set translate3d', function(){
@@ -74,6 +74,7 @@ describe('MicroCSS', function(){
 		assert.equal(css.parseValue('auto'), 0);
 		assert.equal(css.parseValue('10px'), 10);
 		assert.equal(css.parseValue('10em'), 10);
+		assert.equal(css.parseValue('10.5em'), 10.5);
 	});
 
 	it("css apply/clear", function(){
@@ -104,4 +105,6 @@ describe('MicroCSS', function(){
 		assert.equal(css.isFixed(document), false);
 		assert.equal(css.isFixed(window), true);
 	});
+
+
 })
