@@ -1,4 +1,4 @@
-module['exports'] = css;
+module.exports = css;
 
 
 var win = window;
@@ -9,7 +9,7 @@ var fakeStyle = document.createElement('div').style;
 
 
 /** Detect vendor prefix. */
-var prefix = css['prefix'] = (function() {
+var prefix = css.prefix = (function() {
 	var regex = /^(webkit|moz|ms|O|khtml)[A-Z]/, prop;
 	for (prop in fakeStyle) {
 		if (regex.test(prop)) {
@@ -32,7 +32,7 @@ function pd(e){
  * @param    {Element}   $el   Target to make unselectable.
  */
 
-css['disableSelection'] = function($el){
+css.disableSelection = function($el){
 	css($el, {
 		'user-select': 'none',
 		'user-drag': 'none',
@@ -41,7 +41,7 @@ css['disableSelection'] = function($el){
 	$el.setAttribute('unselectable', 'on');
 	$el.addEventListener('selectstart', pd);
 };
-css['enableSelection'] = function($el){
+css.enableSelection = function($el){
 	css($el, {
 		'user-select': null,
 		'user-drag': null,
@@ -59,7 +59,7 @@ css['enableSelection'] = function($el){
  * @return   {Object}   Paddings object `{top:n, bottom:n, left:n, right:n}`.
  */
 
-css['paddings'] = function($el){
+css.paddings = function($el){
 	var style = win.getComputedStyle($el);
 
 	return {
@@ -78,7 +78,7 @@ css['paddings'] = function($el){
  * @return   {Object}   Paddings object `{top:n, bottom:n, left:n, right:n}`.
  */
 
-css['margins'] = function($el){
+css.margins = function($el){
 	var style = win.getComputedStyle($el);
 
 	return {
@@ -95,7 +95,7 @@ function parseValue(str){
 	str += '';
 	return parseFloat(str.slice(0,-2)) || 0;
 }
-css['parseValue'] = parseValue;
+css.parseValue = parseValue;
 
 
 /**
@@ -105,7 +105,7 @@ css['parseValue'] = parseValue;
  * @return   {Object}   Offsets object with trbl, fromBottom, fromLeft.
  */
 
-css['offsets'] = function(el, relativeTo){
+css.offsets = function(el, relativeTo){
 	//TODO: handle relativeTo arg
 	if (!el) return false;
 
@@ -122,7 +122,7 @@ css['offsets'] = function(el, relativeTo){
 	}
 
 	//whether element is or is in fixed
-	var isFixed = css['isFixed'](el);
+	var isFixed = css.isFixed(el);
 	var xOffset = isFixed ? 0 : win.pageXOffset;
 	var yOffset = isFixed ? 0 : win.pageYOffset;
 
@@ -145,7 +145,7 @@ css['offsets'] = function(el, relativeTo){
  * @return {boolean} Whether element is nested.
  */
 
-css['isFixed'] = function (el) {
+css.isFixed = function (el) {
 	var parentEl = el;
 
 	//window is fixed, btw
