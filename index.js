@@ -214,3 +214,27 @@ function prefixize(name){
 	if (fakeStyle[prefix + uName] !== undefined) return prefix + uName;
 	return '';
 }
+
+
+/**
+ * Calc sb width
+ *
+ * @return {number} in pixels
+ */
+
+// Create the measurement node
+var scrollDiv = document.createElement("div");
+css(scrollDiv,{
+	width: 100,
+	height: 100,
+	overflow: 'scroll',
+	position: 'absolute',
+	top: -9999,
+});
+document.body.appendChild(scrollDiv);
+
+// Get the scrollbar width
+css.scrollbar = scrollDiv.offsetWidth - scrollDiv.clientWidth;
+
+// Delete the DIV
+document.body.removeChild(scrollDiv);
