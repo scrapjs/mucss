@@ -1,11 +1,11 @@
 module.exports = css;
 
 
-var win = window;
+var win = window, doc = document, root = doc.documentElement, body = doc.body;
 
 
 /** Get clean style. */
-var fakeStyle = document.createElement('div').style;
+var fakeStyle = doc.createElement('div').style;
 
 
 /** Detect vendor prefix. */
@@ -101,12 +101,13 @@ css.parseValue = parseValue;
 /**
  * Return absolute offsets of any target passed
  *
+ * @todo   calc relativeTo
+ *
  * @param    {Element}   el   A target.
  * @return   {Object}   Offsets object with trbl, fromBottom, fromLeft.
  */
 
 css.offsets = function(el, relativeTo){
-	//TODO: handle relativeTo arg
 	if (!el) return false;
 
 	//calc client rect
@@ -151,8 +152,8 @@ css.isFixed = function (el) {
 	//window is fixed, btw
 	if (el === win) return true;
 
-	//unlike the document
-	if (el === document) return false;
+	//unlike the doc
+	if (el === doc) return false;
 
 	while (parentEl) {
 		if (win.getComputedStyle(parentEl).position === 'fixed') return true;
@@ -189,7 +190,6 @@ function css(el, obj){
 		obj[name] = value;
 	}
 
-
 	for (name in obj){
 		//convert numbers to px
 		if (typeof obj[name] === 'number') obj[name] += 'px';
@@ -223,7 +223,7 @@ function prefixize(name){
  */
 
 // Create the measurement node
-var scrollDiv = document.createElement("div");
+var scrollDiv = doc.createElement("div");
 css(scrollDiv,{
 	width: 100,
 	height: 100,
@@ -231,10 +231,10 @@ css(scrollDiv,{
 	position: 'absolute',
 	top: -9999,
 });
-document.body.appendChild(scrollDiv);
+root.appendChild(scrollDiv);
 
 // Get the scrollbar width
 css.scrollbar = scrollDiv.offsetWidth - scrollDiv.clientWidth;
 
 // Delete the DIV
-document.body.removeChild(scrollDiv);
+root.removeChild(scrollDiv);
