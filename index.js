@@ -63,10 +63,10 @@ css.paddings = function($el){
 	var style = win.getComputedStyle($el);
 
 	return {
-		top: parseValue(style.paddingTop),
-		left: parseValue(style.paddingLeft),
-		bottom: parseValue(style.paddingBottom),
-		right: parseValue(style.paddingRight)
+		top: parseCSSValue(style.paddingTop),
+		left: parseCSSValue(style.paddingLeft),
+		bottom: parseCSSValue(style.paddingBottom),
+		right: parseCSSValue(style.paddingRight)
 	};
 };
 
@@ -82,20 +82,20 @@ css.margins = function($el){
 	var style = win.getComputedStyle($el);
 
 	return {
-		top: parseValue(style.marginTop),
-		left: parseValue(style.marginLeft),
-		bottom: parseValue(style.marginBottom),
-		right: parseValue(style.marginRight)
+		top: parseCSSValue(style.marginTop),
+		left: parseCSSValue(style.marginLeft),
+		bottom: parseCSSValue(style.marginBottom),
+		right: parseCSSValue(style.marginRight)
 	};
 };
 
 
 /** Returns parsed css value. */
-function parseValue(str){
+function parseCSSValue(str){
 	str += '';
 	return parseFloat(str.slice(0,-2)) || 0;
 }
-css.parseValue = parseValue;
+css.parseValue = parseCSSValue;
 
 
 /**
