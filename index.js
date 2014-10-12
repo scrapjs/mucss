@@ -60,6 +60,8 @@ css.enableSelection = function($el){
  */
 
 css.paddings = function($el){
+	if (!($el instanceof Node)) throw Error('Argument is not an element');
+
 	var style = win.getComputedStyle($el);
 
 	return {
@@ -79,6 +81,8 @@ css.paddings = function($el){
  */
 
 css.margins = function($el){
+	if (!($el instanceof Node)) throw Error('Argument is not an element');
+
 	var style = win.getComputedStyle($el);
 
 	return {
