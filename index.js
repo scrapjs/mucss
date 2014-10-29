@@ -131,7 +131,8 @@ css.offsets = function(el, relativeTo){
 	var xOffset = isFixed ? 0 : win.pageXOffset;
 	var yOffset = isFixed ? 0 : win.pageYOffset;
 
-	return {
+
+	var result = {
 		top: cRect.top + yOffset,
 		left: cRect.left + xOffset,
 		width: el.offsetWidth,
@@ -139,6 +140,14 @@ css.offsets = function(el, relativeTo){
 		bottom: cRect.top + yOffset + el.offsetHeight,
 		right: cRect.left + xOffset + el.offsetWidth
 	};
+
+	//ignore top margins, if el is body and it is static
+	if (el === doc.body || el === root && win.getComputedStyle(el).position === 'static') {
+		result.top = 0;
+		result.left = 0;
+	}
+
+	return result;
 };
 
 
