@@ -94,6 +94,23 @@ css.margins = function($el){
 };
 
 
+/**
+ * Return border widths of an element
+ */
+css.borders = function($el){
+	if (!($el instanceof Element)) throw Error('Argument is not an element');
+
+	var style = win.getComputedStyle($el);
+
+	return {
+		top: parseCSSValue(style.borderTopWidth),
+		left: parseCSSValue(style.borderLeftWidth),
+		bottom: parseCSSValue(style.borderBottomWidth),
+		right: parseCSSValue(style.borderRightWidth)
+	};
+};
+
+
 /** Returns parsed css value. */
 function parseCSSValue(str){
 	str += '';
@@ -145,6 +162,7 @@ css.offsets = function(el, relativeTo){
 	if (el === doc.body || el === root && win.getComputedStyle(el).position === 'static') {
 		result.top = 0;
 		result.left = 0;
+		result.height = win.innerHeight;
 	}
 
 	return result;
