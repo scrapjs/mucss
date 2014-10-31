@@ -106,5 +106,11 @@ describe('MicroCSS', function(){
 		assert.equal(css.isFixed(window), true);
 	});
 
-
+	it('z-index', function(){
+		var a = document.createElement('div');
+		css(a, 'z-index', 1);
+		assert.equal(css(a, 'z-index'), 1);
+		css(a, {'z-index': 2});
+		assert.equal(css(a, 'z-index'), 2);
+	});
 })

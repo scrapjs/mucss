@@ -225,7 +225,7 @@ function css(el, obj){
 
 	for (name in obj){
 		//convert numbers to px
-		if (typeof obj[name] === 'number') obj[name] += 'px';
+		if (typeof obj[name] === 'number' && /left|right|bottom|top|width|height/i.test(name)) obj[name] += 'px';
 
 		value = obj[name] || '';
 
