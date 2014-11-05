@@ -1,6 +1,6 @@
 {
   "name": "mucss",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "μcss (micro CSS) — vital CSS utils",
   "main": "index.js",
   "directories": {
