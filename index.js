@@ -159,8 +159,8 @@ css.offsets = function(el, relativeTo){
 	};
 
 	//ignore top margins, if el is body and it is static
-	if (el === doc.body || el === root && win.getComputedStyle(el).position === 'static') {
-		result.right -= result.left;
+	if ((el === doc.body || el === root) && win.getComputedStyle(el).position === 'static') {
+		result.right = win.innerWidth;
 		result.top = 0;
 		result.left = 0;
 		result.height = win.innerHeight;
@@ -254,7 +254,6 @@ function prefixize(name){
  *
  * @return {number} in pixels
  */
-
 // Create the measurement node
 var scrollDiv = doc.createElement("div");
 css(scrollDiv,{
@@ -266,8 +265,18 @@ css(scrollDiv,{
 });
 root.appendChild(scrollDiv);
 
-// Get the scrollbar width
+/** the scrollbar width */
 css.scrollbar = scrollDiv.offsetWidth - scrollDiv.clientWidth;
 
-// Delete the DIV
+// Delete fake DIV
 root.removeChild(scrollDiv);
+
+
+
+/** window scrollbar detectors */
+css.hasScrollX = function(){
+	return win.innerHeight > root.clientHeight;
+};
+css.hasScrollY = function(){
+	return win.innerWidth > root.clientWidth;
+};
