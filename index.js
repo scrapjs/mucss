@@ -160,11 +160,12 @@ css.offsets = function(el, relativeTo){
 
 	//ignore top margins, if el is body and it is static
 	if ((el === doc.body || el === root) && win.getComputedStyle(el).position === 'static') {
-		result.right = win.innerWidth;
 		result.top = 0;
 		result.left = 0;
+		result.right = win.innerWidth;
+		result.width = win.innerWidth;
 		result.height = win.innerHeight;
-		result.bottom = result.height;
+		result.bottom = win.innerHeight;
 	}
 
 	return result;
