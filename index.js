@@ -129,7 +129,7 @@ css.parseValue = parseCSSValue;
  */
 
 css.offsets = function(el, relativeTo){
-	if (!el) return false;
+	if (!el) throw Error('Bad argument');
 
 	//calc client rect
 	var cRect;
@@ -158,14 +158,11 @@ css.offsets = function(el, relativeTo){
 		right: cRect.left + xOffset + el.offsetWidth
 	};
 
-	//ignore top margins, if el is body and it is static
-	if ((el === doc.body || el === root) && win.getComputedStyle(el).position === 'static') {
-		result.top = 0;
-		result.left = 0;
-		result.right = win.innerWidth;
-		result.width = win.innerWidth;
-		result.height = win.innerHeight;
-		result.bottom = win.innerHeight;
+	if (el === doc.body || el === root) {
+		//correct body margins
+		var m = css.margins(el);
+		result.right -= m.right;
+		result.bottom -= m.bottom;
 	}
 
 	return result;
