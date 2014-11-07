@@ -158,13 +158,6 @@ css.offsets = function(el, relativeTo){
 		right: cRect.left + xOffset + el.offsetWidth
 	};
 
-	if (el === doc.body || el === root) {
-		//correct body margins
-		var m = css.margins(el);
-		result.right -= m.right;
-		result.bottom -= m.bottom;
-	}
-
 	return result;
 };
 
