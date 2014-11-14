@@ -271,12 +271,3 @@ css.hasScrollX = function(){
 css.hasScrollY = function(){
 	return win.innerWidth > root.clientWidth;
 };
-
-
-/** return real offset parent, or window */
-css.offsetParent = function(el){
-	el = el.offsetParent;
-	if (el === doc.body || el === root && getComputedStyle(el).position === 'static')
-	return win;
-	return el;
-};
