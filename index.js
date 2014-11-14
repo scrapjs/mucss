@@ -122,7 +122,7 @@ css.parseValue = parseCSSValue;
 /**
  * Return absolute offsets of any target passed
  *
- * @param    {Element}   el   A target.
+ * @param    {Element|window}   el   A target. Pass window to calculate viewport offsets
  * @return   {Object}   Offsets object with trbl, fromBottom, fromLeft.
  */
 
@@ -130,18 +130,20 @@ css.offsets = function(el){
 	if (!el) throw Error('Bad argument');
 
 	//calc client rect
-	var cRect;
+	var cRect, result;
 
 	//return vp offsets
 	if (el === win) {
-		return {
-			top: 0,
-			left: 0,
-			right: win.innerWidth,
-			bottom: win.innerHeight,
-			height: win.innerHeight,
-			width: win.innerWidth
-		}
+		result = {
+			top: win.pageYOffset,
+			left: win.pageXOffset,
+			width: win.innerWidth - (css.hasScrollY() ? css.scrollbar : 0),
+			height: win.innerHeight - (css.hasScrollX() ? css.scrollbar : 0)
+		};
+
+		result.right = result.left + result.width;
+		result.bottom = result.top + result.height;
+		return result;
 	}
 
 	//FIXME: why not every element has getBoundingClientRect method?
@@ -160,7 +162,7 @@ css.offsets = function(el){
 	var yOffset = isFixed ? 0 : win.pageYOffset;
 
 
-	var result = {
+	result = {
 		top: cRect.top + yOffset,
 		left: cRect.left + xOffset,
 		width: el.offsetWidth,
