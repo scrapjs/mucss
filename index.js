@@ -302,3 +302,5 @@ function Rect(l,t,r,b,w,h){
 	if (w!==undefined) this.width=w||this.right-this.left;
 	if (h!==undefined) this.height=h||this.bottom-this.top;
 }
+
+css.Rect = Rect;
