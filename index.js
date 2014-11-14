@@ -60,16 +60,18 @@ css.enableSelection = function($el){
  */
 
 css.paddings = function($el){
+	if ($el === win) return new Rect();
+
 	if (!($el instanceof Element)) throw Error('Argument is not an element');
 
 	var style = win.getComputedStyle($el);
 
-	return {
-		top: parseCSSValue(style.paddingTop),
-		left: parseCSSValue(style.paddingLeft),
-		bottom: parseCSSValue(style.paddingBottom),
-		right: parseCSSValue(style.paddingRight)
-	};
+	return new Rect(
+		parseCSSValue(style.paddingLeft),
+		parseCSSValue(style.paddingTop),
+		parseCSSValue(style.paddingRight),
+		parseCSSValue(style.paddingBottom)
+	);
 };
 
 
@@ -81,16 +83,18 @@ css.paddings = function($el){
  */
 
 css.margins = function($el){
+	if ($el === win) return new Rect();
+
 	if (!($el instanceof Element)) throw Error('Argument is not an element');
 
 	var style = win.getComputedStyle($el);
 
-	return {
-		top: parseCSSValue(style.marginTop),
-		left: parseCSSValue(style.marginLeft),
-		bottom: parseCSSValue(style.marginBottom),
-		right: parseCSSValue(style.marginRight)
-	};
+	return new Rect(
+		parseCSSValue(style.marginLeft),
+		parseCSSValue(style.marginTop),
+		parseCSSValue(style.marginRight),
+		parseCSSValue(style.marginBottom)
+	);
 };
 
 
@@ -98,16 +102,18 @@ css.margins = function($el){
  * Return border widths of an element
  */
 css.borders = function($el){
+	if ($el === win) return new Rect;
+
 	if (!($el instanceof Element)) throw Error('Argument is not an element');
 
 	var style = win.getComputedStyle($el);
 
-	return {
-		top: parseCSSValue(style.borderTopWidth),
-		left: parseCSSValue(style.borderLeftWidth),
-		bottom: parseCSSValue(style.borderBottomWidth),
-		right: parseCSSValue(style.borderRightWidth)
-	};
+	return new Rect(
+		parseCSSValue(style.borderLeftWidth),
+		parseCSSValue(style.borderTopWidth),
+		parseCSSValue(style.borderRightWidth),
+		parseCSSValue(style.borderBottomWidth)
+	);
 };
 
 
@@ -134,15 +140,16 @@ css.offsets = function(el){
 
 	//return vp offsets
 	if (el === win) {
-		result = {
-			top: win.pageYOffset,
-			left: win.pageXOffset,
-			width: win.innerWidth - (css.hasScrollY() ? css.scrollbar : 0),
-			height: win.innerHeight - (css.hasScrollX() ? css.scrollbar : 0)
-		};
+		result = new Rect(
+			win.pageXOffset,
+			win.pageYOffset
+		);
 
+		result.width = win.innerWidth - (css.hasScrollY() ? css.scrollbar : 0),
+		result.height = win.innerHeight - (css.hasScrollX() ? css.scrollbar : 0)
 		result.right = result.left + result.width;
 		result.bottom = result.top + result.height;
+
 		return result;
 	}
 
@@ -150,10 +157,10 @@ css.offsets = function(el){
 	try {
 		cRect = el.getBoundingClientRect();
 	} catch (e) {
-		cRect = {
-			top: el.clientTop,
-			left: el.clientLeft
-		};
+		cRect = new Rect(
+			el.clientLeft,
+			el.clientTop
+		);
 	}
 
 	//whether element is or is in fixed
@@ -162,14 +169,14 @@ css.offsets = function(el){
 	var yOffset = isFixed ? 0 : win.pageYOffset;
 
 
-	result = {
-		top: cRect.top + yOffset,
-		left: cRect.left + xOffset,
-		width: el.offsetWidth,
-		height: el.offsetHeight,
-		bottom: cRect.top + yOffset + el.offsetHeight,
-		right: cRect.left + xOffset + el.offsetWidth
-	};
+	result = new Rect(
+		cRect.left + xOffset,
+		cRect.top + yOffset,
+		cRect.left + xOffset + el.offsetWidth,
+		cRect.top + yOffset + el.offsetHeight,
+		el.offsetWidth,
+		el.offsetHeight
+	);
 
 	return result;
 };
@@ -284,3 +291,14 @@ css.hasScrollX = function(){
 css.hasScrollY = function(){
 	return win.innerWidth > root.clientWidth;
 };
+
+
+/** simple rect stub  */
+function Rect(l,t,r,b,w,h){
+	this.top=t||0;
+	this.bottom=b||0;
+	this.left=l||0;
+	this.right=r||0;
+	if (w!==undefined) this.width=w||this.right-this.left;
+	if (h!==undefined) this.height=h||this.bottom-this.top;
+}
