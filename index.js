@@ -122,18 +122,29 @@ css.parseValue = parseCSSValue;
 /**
  * Return absolute offsets of any target passed
  *
- * @todo   calc relativeTo
- *
  * @param    {Element}   el   A target.
  * @return   {Object}   Offsets object with trbl, fromBottom, fromLeft.
  */
 
-css.offsets = function(el, relativeTo){
+css.offsets = function(el){
 	if (!el) throw Error('Bad argument');
 
 	//calc client rect
 	var cRect;
 
+	//return vp offsets
+	if (el === win) {
+		return {
+			top: 0,
+			left: 0,
+			right: win.innerWidth,
+			bottom: win.innerHeight,
+			height: win.innerHeight,
+			width: win.innerWidth
+		}
+	}
+
+	//FIXME: why not every element has getBoundingClientRect method?
 	try {
 		cRect = el.getBoundingClientRect();
 	} catch (e) {
