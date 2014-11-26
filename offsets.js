@@ -1,5 +1,8 @@
 var win = window;
 var Rect = require('./Rect');
+var hasScroll = require('./has-scroll');
+var scrollbar = require('./scrollbar');
+var isFixedEl = require('./is-fixed');
 
 /**
  * Return absolute offsets of any target passed
@@ -7,7 +10,7 @@ var Rect = require('./Rect');
  * @param    {Element|window}   el   A target. Pass window to calculate viewport offsets
  * @return   {Object}   Offsets object with trbl, fromBottom, fromLeft.
  */
-module.exports =  function(el){
+module.exports = function(el){
 	if (!el) throw Error('Bad argument');
 
 	//calc client rect
@@ -20,8 +23,8 @@ module.exports =  function(el){
 			win.pageYOffset
 		);
 
-		result.width = win.innerWidth - (css.hasScrollY() ? css.scrollbar : 0),
-		result.height = win.innerHeight - (css.hasScrollX() ? css.scrollbar : 0)
+		result.width = win.innerWidth - (hasScroll.y() ? scrollbar : 0),
+		result.height = win.innerHeight - (hasScroll.x() ? scrollbar : 0)
 		result.right = result.left + result.width;
 		result.bottom = result.top + result.height;
 
@@ -39,7 +42,7 @@ module.exports =  function(el){
 	}
 
 	//whether element is or is in fixed
-	var isFixed = css.isFixed(el);
+	var isFixed = isFixedEl(el);
 	var xOffset = isFixed ? 0 : win.pageXOffset;
 	var yOffset = isFixed ? 0 : win.pageYOffset;
 

@@ -1,4 +1,4 @@
-var css = require('../index');
+var mucss = require('../index');
 var assert = require('assert');
 
 
@@ -6,19 +6,19 @@ describe('MicroCSS', function(){
 	it('Set translate3d', function(){
 		var a = document.createElement('div');
 		var value = 'translate3d(0px, 0px, 0px)';
-		css(a, {
+		mucss(a, {
 			'transform': value
 		});
 
-		assert.equal(css(a,'transform'), value);
+		assert.equal(mucss(a,'transform'), value);
 	});
 
 	it('selection on/off', function(){
 		var a = document.createElement('div');
-		css.disableSelection(a);
+		mucss.disableSelection(a);
 		assert.ok(a.getAttribute('unselectable'));
 
-		css.enableSelection(a);
+		mucss.enableSelection(a);
 		assert.ok(!a.getAttribute('unselectable'));
 	});
 
@@ -27,7 +27,7 @@ describe('MicroCSS', function(){
 		a.style.padding = '10px 20px';
 		document.body.appendChild(a);
 
-		var paddings = css.paddings(a);
+		var paddings = mucss.paddings(a);
 		assert.deepEqual(paddings, {
 			top: 10,
 			bottom: 10,
@@ -41,7 +41,7 @@ describe('MicroCSS', function(){
 		a.style.margin = '10px 20px';
 		document.body.appendChild(a);
 
-		var margins = css.margins(a);
+		var margins = mucss.margins(a);
 		assert.deepEqual(margins, {
 			top: 10,
 			bottom: 10,
@@ -52,7 +52,8 @@ describe('MicroCSS', function(){
 
 	it("offsets", function(){
 		var a = document.createElement('a');
-		css(a, {
+
+		mucss(a, {
 			margin: '10px',
 			padding: '10px',
 			position: 'absolute',
@@ -64,7 +65,7 @@ describe('MicroCSS', function(){
 		document.body.appendChild(a);
 		var r = a.getBoundingClientRect();
 
-		var offsets = css.offsets(a);
+		var offsets = mucss.offsets(a);
 		assert.equal(offsets.top, 210);
 		assert.equal(offsets.left, 310);
 		assert.equal(offsets.bottom, 530);
@@ -72,25 +73,25 @@ describe('MicroCSS', function(){
 	});
 
 	it("parseValue", function(){
-		assert.equal(css.parseValue(0), 0);
-		assert.equal(css.parseValue('auto'), 0);
-		assert.equal(css.parseValue('10px'), 10);
-		assert.equal(css.parseValue('10em'), 10);
-		assert.equal(css.parseValue('10.5em'), 10.5);
+		assert.equal(mucss.parseValue(0), 0);
+		assert.equal(mucss.parseValue('auto'), 0);
+		assert.equal(mucss.parseValue('10px'), 10);
+		assert.equal(mucss.parseValue('10em'), 10);
+		assert.equal(mucss.parseValue('10.5em'), 10.5);
 	});
 
-	it("css apply/clear", function(){
+	it("mucss apply/clear", function(){
 		var a = document.createElement('div');
-		css(a, {
+		mucss(a, {
 			'top': 100
 		});
 
 		assert.equal(a.style.top, '100px');
 
-		css(a, {top: null});
+		mucss(a, {top: null});
 		assert.equal(a.style.top, '');
 
-		css(a, 'left', 200);
+		mucss(a, 'left', 200);
 		assert.equal(a.style.left, '200px');
 	});
 
@@ -100,19 +101,19 @@ describe('MicroCSS', function(){
 		a.style.position = 'fixed';
 		document.body.appendChild(a);
 
-		assert.equal(css.isFixed(a), true);
-		assert.equal(css.isFixed(a.firstChild), true);
-		assert.equal(css.isFixed(a.firstChild.firstChild), true);
-		assert.equal(css.isFixed(a.parentNode), false);
-		assert.equal(css.isFixed(document), false);
-		assert.equal(css.isFixed(window), true);
+		assert.equal(mucss.isFixed(a), true);
+		assert.equal(mucss.isFixed(a.firstChild), true);
+		assert.equal(mucss.isFixed(a.firstChild.firstChild), true);
+		assert.equal(mucss.isFixed(a.parentNode), false);
+		assert.equal(mucss.isFixed(document), false);
+		assert.equal(mucss.isFixed(window), true);
 	});
 
 	it('z-index', function(){
 		var a = document.createElement('div');
-		css(a, 'z-index', 1);
-		assert.equal(css(a, 'z-index'), 1);
-		css(a, {'z-index': 2});
-		assert.equal(css(a, 'z-index'), 2);
+		mucss(a, 'z-index', 1);
+		assert.equal(mucss(a, 'z-index'), 1);
+		mucss(a, {'z-index': 2});
+		assert.equal(mucss(a, 'z-index'), 2);
 	});
 })

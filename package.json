@@ -14,7 +14,8 @@
     "closurecompiler": "*",
     "require-stub": "*",
     "assert": "~1.x",
-    "mochify": "*"
+    "mochify": "*",
+    "mocaccino": "~1.3.0"
   },
   "scripts": {
     "test": "mochify"
@@ -30,10 +31,15 @@
     "margins",
     "offsets",
     "prefix",
-    "vendor"
+    "vendor",
+    "is-fixed",
+    "scrollbar",
+    "has-scroll",
+    "borders",
+    "selection"
   ],
   "author": "dfcreative",
-  "license": "MIT",
+  "license": "Unlicensed",
   "bugs": {
     "url": "https://github.com/dfcreative/mucss/issues"
   },
