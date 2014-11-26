@@ -9,14 +9,28 @@ Vital CSS utils useful for lightweight components development. Provides atomic-s
 $ npm install mucss
 ```
 
+Include submodules:
+
 ```js
 var css = require('mucss/css');
+var offsets = require('mucss/offsets');
+var margins = require('mucss/margins');
+
+var marginsTop = margins(el).top;
+```
+
+Or include the whole lib (_<1kb gzipped_):
+
+```js
+var css = require('mucss');
+css(el, {top: 100});
 ```
 
 # API
 
-* `css(el, { transform: 'translate3d(10px,10px,0)' })` - apply set of css rules to the element, automatically prefixed. Numbers are automatically converted to `px`.
+* `css(el, { transform: 'translate3d(10px,10px,0)' })` - apply set of css rules to the element, automatically prefixed. Numbers are automatically converted to `px`. The same as jQuery’s css.
 * `css(el, 'transform')` - get style property value, properly prefixed.
+
 * `css.offsets(el)` - get absolute offsets relative to the document, including `position: fixed` detection.
 * `css.paddings(el)` - get element paddings.
 * `css.margins(el)` - get element margins.
