@@ -1,4 +1,6 @@
 var css = require('../index.js');
+var assert = require('assert');
+
 
 describe('MicroCSS', function(){
 	it('Set translate3d', function(){
@@ -17,7 +19,7 @@ describe('MicroCSS', function(){
 		assert.ok(a.getAttribute('unselectable'));
 
 		css.enableSelection(a);
-		assert.notOk(a.getAttribute('unselectable'));
+		assert.ok(!a.getAttribute('unselectable'));
 	});
 
 	it("paddings", function(){

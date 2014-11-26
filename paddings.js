@@ -1,0 +1,23 @@
+var Rect = require('./Rect');
+var parse = require('./parse-value');
+
+/**
+ * Return paddings of an element.
+ *
+ * @param    {Element}   $el   An element to calc paddings.
+ * @return   {Object}   Paddings object `{top:n, bottom:n, left:n, right:n}`.
+ */
+module.exports = function($el){
+	if ($el === window) return new Rect();
+
+	if (!($el instanceof Element)) throw Error('Argument is not an element');
+
+	var style = window.getComputedStyle($el);
+
+	return new Rect(
+		parse(style.paddingLeft),
+		parse(style.paddingTop),
+		parse(style.paddingRight),
+		parse(style.paddingBottom)
+	);
+};
