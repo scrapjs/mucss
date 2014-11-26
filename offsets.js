@@ -43,7 +43,6 @@ module.exports =  function(el){
 	var xOffset = isFixed ? 0 : win.pageXOffset;
 	var yOffset = isFixed ? 0 : win.pageYOffset;
 
-
 	result = new Rect(
 		cRect.left + xOffset,
 		cRect.top + yOffset,

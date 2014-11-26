@@ -5,20 +5,21 @@
 <title>Mucss tests</title>
 
 
-<link rel="stylesheet" href="mocha.css" />
-<script src="mocha.js"></script>
+<link rel="stylesheet" href="../node_modules/mocha/mocha.css" />
+<script src="../node_modules/mocha/mocha.js"></script>
 
 
 <div id="mocha"></div>
 
 
+<script src="../node_modules/require-stub/index.js"></script>
+
 <script>
+	var mocha = require('mocha');
 	mocha.setup('bdd');
 </script>
 
 
-<script src="../node_modules/require-stub/index.js"></script>
-<!-- <script src="../test/test.js"></script> -->
 
 <script src="index.js"></script>
 

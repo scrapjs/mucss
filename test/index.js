@@ -1,4 +1,4 @@
-var css = require('../index.js');
+var css = require('../index');
 var assert = require('assert');
 
 
