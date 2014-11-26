@@ -9,7 +9,7 @@ Vital CSS utils useful for lightweight components development. Provides atomic-s
 $ npm install mucss
 ```
 
-Or include the whole lib:
+Include the whole lib:
 
 ```js
 var css = require('mucss');
@@ -17,7 +17,7 @@ css(el, {top: 100});
 ```
 
 
-Or include submodules:
+or include submodules:
 
 ```js
 var css = require('mucss/css');
