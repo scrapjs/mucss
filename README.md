@@ -1,6 +1,6 @@
 # Micro CSS [![Build Status](https://travis-ci.org/dfcreative/mucss.svg?branch=master)](https://travis-ci.org/dfcreative/mucss)
 
-μCSS is vital CSS util set useful for lightweight components development. Provides atomic-size css functions for easy include, as well as a very compact lib (_<1kb gzipped_).
+μCSS is a vital CSS util set useful for lightweight components development. It provides atomic-size css functions for easy include and a compact lib (_<1kb gzipped_).
 
 [![NPM](https://nodei.co/npm/mucss.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/mucss/)
 
