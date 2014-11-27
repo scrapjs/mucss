@@ -18,7 +18,7 @@
     "mocaccino": "*"
   },
   "scripts": {
-    "test": "browserify -p mocaccino test/a.js | phantomic --brout"
+    "test": "mochify"
   },
   "repository": {
     "type": "git",
