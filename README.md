@@ -1,6 +1,6 @@
 # Micro CSS [![Build Status](https://travis-ci.org/dfcreative/mucss.svg?branch=master)](https://travis-ci.org/dfcreative/mucss)
 
-μCSS is a vital CSS util set useful for lightweight components development. It provides atomic-size css functions for easy include and a compact lib (_<1kb gzipped_).
+Vital CSS utils useful for lightweight components development (_<1kb gzipped_).
 
 [![NPM](https://nodei.co/npm/mucss.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/mucss/)
 
@@ -38,7 +38,8 @@ var marginsTop = margins(el).top;
 * `css.borders(el)` - get element border widths.
 * `css.parseValue(str)` - parse units value.
 * `css.enableSelection(el)`, `css.disableSelection(el)` - set & unset element selectable.
-* `css.prefix` - current browser CSS prefix, e. g. `'webkit'`
+* `css.prefix` - current browser CSS prefixes object.
+* `css.scrollbar` - a scrollbar size.
 * `css.isFixed(el)` - whether element is in fixed element or is fixed itself.
 * `css.hasScrollX()`, `css.hasScrollY()` - whether document has horizontal (x) or vertical (y) scrollbar.
 
