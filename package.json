@@ -6,6 +6,9 @@
   "directories": {
     "test": "test"
   },
+  "files": [
+    "*.js"
+  ],
   "dependencies": {},
   "devDependencies": {
     "chai": "^1.x",
@@ -14,8 +17,7 @@
     "closurecompiler": "*",
     "require-stub": "*",
     "assert": "~1.x",
-    "mochify": "*",
-    "mocaccino": "*"
+    "mochify": "*"
   },
   "scripts": {
     "test": "mochify"
@@ -39,7 +41,7 @@
     "selection"
   ],
   "author": "dfcreative",
-  "license": "Unlicensed",
+  "license": "Unlicense",
   "bugs": {
     "url": "https://github.com/dfcreative/mucss/issues"
   },
