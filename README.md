@@ -30,16 +30,17 @@ var marginsTop = margins(el).top;
 * `css(el, { transform: 'translate3d(10px,10px,0)' })` - apply set of css rules to the element, automatically prefixed. Numbers are automatically converted to `px`. The same as jQuery’s css.
 * `css(el, 'transform')` - get style property value, properly prefixed.
 
-* `css.offsets(el)` - get absolute offsets relative to the document, including `position: fixed` detection.
-* `css.paddings(el)` - get element paddings.
-* `css.margins(el)` - get element margins.
-* `css.borders(el)` - get element border widths.
-* `css.parseValue(str)` - parse units value.
-* `css.enableSelection(el)`, `css.disableSelection(el)` - set & unset element selectable.
-* `css.prefix` - current browser CSS prefixes object.
-* `css.scrollbar` - a scrollbar size.
-* `css.isFixed(el)` - whether element is in fixed element or is fixed itself.
-* `css.hasScrollX()`, `css.hasScrollY()` - whether document has horizontal (x) or vertical (y) scrollbar.
+* `offsets(el)` - get absolute offsets relative to the document, including `position: fixed` detection.
+* `paddings(el)` - get element paddings.
+* `margins(el)` - get element margins.
+* `borders(el)` - get element border widths.
+* `parseValue(str)` - parse units value.
+* `enableSelection(el)`, `disableSelection(el)` - set & unset element selectable.
+* `prefix` - current browser CSS prefixes object.
+* `scrollbar` - a scrollbar size.
+* `isFixed(el)` - whether element is in fixed element or is fixed itself.
+* `hasScrollX()`, `hasScrollY()` - whether document has horizontal (x) or vertical (y) scrollbar.
+* `isInViewport(el)` - whether element is in the viewport
 
 
 [![NPM](https://nodei.co/npm/mucss.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/mucss/)

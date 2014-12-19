@@ -38,7 +38,8 @@
     "scrollbar",
     "has-scroll",
     "borders",
-    "selection"
+    "selection",
+    "viewport"
   ],
   "author": "dfcreative",
   "license": "Unlicense",
