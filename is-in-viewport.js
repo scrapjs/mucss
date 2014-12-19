@@ -1,7 +1,7 @@
 /**
  * @module mucss/is-in-viewport
  */
-module.exports = (el) {
+module.exports = function (el) {
     var rect = el.getBoundingClientRect();
 
     return (
@@ -10,4 +10,4 @@ module.exports = (el) {
         rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /*or $(window).height() */
         rect.right <= (window.innerWidth || document.documentElement.clientWidth) /*or $(window).width() */
     );
-}
+};
