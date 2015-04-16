@@ -1,4 +1,8 @@
-/** window scrollbar detectors */
+/**
+ * Window scrollbar detector.
+ *
+ * @module mucss/has-scroll
+ */
 exports.x = function(){
 	return win.innerHeight > root.clientHeight;
 };

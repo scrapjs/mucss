@@ -1,4 +1,9 @@
-//vendor-prefix method, http://davidwalsh.name/vendor-prefix
+/**
+ * Vendor prefixes
+ * Method of http://davidwalsh.name/vendor-prefix
+ * @module mucss/prefix
+ */
+
 var styles = getComputedStyle(document.documentElement, '');
 
 var pre = (Array.prototype.slice.call(styles)

@@ -1,5 +1,7 @@
 /**
- * Calc sb width
+ * Calculate scrollbar width.
+ *
+ * @module mucss/scrollbar
  */
 
 // Create the measurement node
@@ -15,7 +17,7 @@ style.top = '-9999px';
 
 document.body.appendChild(scrollDiv);
 
-/** the scrollbar width */
+// the scrollbar width
 module.exports = scrollDiv.offsetWidth - scrollDiv.clientWidth;
 
 // Delete fake DIV

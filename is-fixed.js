@@ -1,5 +1,7 @@
 /**
- * Detect whether element is placed to fixed container or fixed itself.
+ * Detect whether element is placed to fixed container or is fixed itself.
+ *
+ * @module mucss/is-fixed
  *
  * @param {(Element|Object)} el Element to detect fixedness.
  *

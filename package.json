@@ -1,7 +1,7 @@
 {
   "name": "mucss",
   "version": "0.5.9",
-  "description": "μCSS (micro CSS) — vital CSS utils",
+  "description": "μCSS — vital CSS utils",
   "main": "index.js",
   "directories": {
     "test": "test"
@@ -12,11 +12,10 @@
   "dependencies": {},
   "devDependencies": {
     "chai": "^1.x",
-    "phantomjs": "~1.x",
-    "mocha": "~1.x",
+    "phantomjs": "^1.x",
+    "mocha": "^1.x",
     "closurecompiler": "*",
     "require-stub": "*",
-    "assert": "~1.x",
     "mochify": "*"
   },
   "scripts": {

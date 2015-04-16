@@ -1,3 +1,9 @@
+/**
+ * Calculate absolute offsets of an element, relative to the document.
+ *
+ * @module mucss/offsets
+ *
+ */
 var win = window;
 var Rect = require('./Rect');
 var hasScroll = require('./has-scroll');
@@ -8,7 +14,7 @@ var isFixedEl = require('./is-fixed');
  * Return absolute offsets of any target passed
  *
  * @param    {Element|window}   el   A target. Pass window to calculate viewport offsets
- * @return   {Object}   Offsets object with trbl, fromBottom, fromLeft.
+ * @return   {Object}   Offsets object with trbl.
  */
 module.exports = function(el){
 	if (!el) throw Error('Bad argument');

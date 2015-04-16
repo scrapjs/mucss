@@ -1,5 +1,12 @@
+/**
+ * Caclulate paddings of an element.
+ * @module  mucss/paddings
+ */
+
+
 var Rect = require('./Rect');
 var parse = require('./parse-value');
+
 
 /**
  * Return paddings of an element.

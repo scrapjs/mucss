@@ -1,5 +1,19 @@
-/** simple rect stub  */
-module.exports = function(l,t,r,b,w,h){
+/**
+ * Simple rect constructor.
+ * It is just faster and smaller than constructing an object.
+ *
+ * @module mucss/Rect
+ *
+ * @param {number} l left
+ * @param {number} t top
+ * @param {number} r right
+ * @param {number} b bottom
+ * @param {number}? w width
+ * @param {number}? h height
+ *
+ * @return {Rect} A rectangle object
+ */
+module.exports = function Rect (l,t,r,b,w,h) {
 	this.top=t||0;
 	this.bottom=b||0;
 	this.left=l||0;

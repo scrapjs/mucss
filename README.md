@@ -1,7 +1,6 @@
-# Micro CSS [![Build Status](https://travis-ci.org/dfcreative/mucss.svg?branch=master)](https://travis-ci.org/dfcreative/mucss) [![Code Climate](https://codeclimate.com/github/dfcreative/mucss/badges/gpa.svg)](https://codeclimate.com/github/dfcreative/mucss) <a href="UNLICENSE"><img src="http://upload.wikimedia.org/wikipedia/commons/6/62/PD-icon.svg" width="20"/></a>
+# Micro CSS [![Build Status](https://travis-ci.org/dfcreative/mucss.svg?branch=master)](https://travis-ci.org/dfcreative/mucss) [![Code Climate](https://codeclimate.com/github/dfcreative/mucss/badges/gpa.svg)](https://codeclimate.com/github/dfcreative/mucss)
 
-Vital CSS utils useful for lightweight components development (_<1kb gzipped_).
-
+CSS utils for lightweight components development.
 
 ```
 $ npm install mucss
@@ -15,32 +14,60 @@ css(el, {top: 100});
 ```
 
 
-or include submodules:
+or include only submodules:
 
 ```js
 var css = require('mucss/css');
 var offsets = require('mucss/offsets');
 var margins = require('mucss/margins');
 
-var marginsTop = margins(el).top;
+var marginTop = margins(el).top;
 ```
 
-# API
+## API
 
-* `css(el, { transform: 'translate3d(10px,10px,0)' })` - apply set of css rules to the element, automatically prefixed. Numbers are automatically converted to `px`. The same as jQuery’s css.
-* `css(el, 'transform')` - get style property value, properly prefixed.
+### `css(el, { transform: 'translate3d(10px,10px,0)' })`
 
-* `offsets(el)` - get absolute offsets relative to the document, including `position: fixed` detection.
-* `paddings(el)` - get element paddings.
-* `margins(el)` - get element margins.
-* `borders(el)` - get element border widths.
-* `parseValue(str)` - parse units value.
-* `enableSelection(el)`, `disableSelection(el)` - set & unset element selectable.
-* `prefix` - current browser CSS prefixes object.
-* `scrollbar` - a scrollbar size.
-* `isFixed(el)` - whether element is in fixed element or is fixed itself.
-* `hasScrollX()`, `hasScrollY()` - whether document has horizontal (x) or vertical (y) scrollbar.
-* `isInViewport(el)` - whether element is in the viewport
+Apply set of css rules to the element, automatically prefixed. Numbers are automatically converted to `px`. The same as `$.css` in jQuery.
+
+### `css(el, 'transform')`
+Get style property value, properly prefixed.
+
+### `offsets(el)`
+Get absolute offsets relative to the document, including `position: fixed` detection.
+
+### `paddings(el)`
+Get element paddings.
+
+### `margins(el)`
+Get element margins.
+
+### `borders(el)`
+Get element border widths.
+
+### `parseValue(str)`
+Parse units value.
+
+### `selection.enable(el)`, `selection.disable(el)`
+Set & unset element selectability.
+
+### `prefix`
+Current browser CSS prefixes object.
+
+### `scrollbar`
+A scrollbar size.
+
+### `isFixed(el)`
+Whether element is in fixed element or is fixed itself.
+
+### `hasScroll.x()`, `hasScroll.y()`
+Whether document has horizontal (x) or vertical (y) scrollbar.
+
+### `isInViewport(el)`
+Whether element is in the viewport.
+
+### `getTranslate(el)`
+Parse translate3d property of an element, if any.
 
 
 [![NPM](https://nodei.co/npm/mucss.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/mucss/)

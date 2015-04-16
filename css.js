@@ -1,5 +1,11 @@
+/**
+ * Get or set element’s style, prefix-agnostic.
+ *
+ * @module  mucss/css
+ */
 var fakeStyle = require('./fake-element').style;
 var prefix = require('./prefix').dom;
+
 
 /**
  * Apply styles to an element.

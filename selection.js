@@ -1,27 +1,32 @@
+/**
+ * Enable/disable selectability of an element
+ * @module mucss/selection
+ */
 var css = require('./css');
+
 
 /**
  * Disable or Enable any selection possibilities for an element.
  *
- * @param    {Element}   $el   Target to make unselectable.
+ * @param    {Element}   el   Target to make unselectable.
  */
-exports.disable = function($el){
-	css($el, {
+exports.disable = function(el){
+	css(el, {
 		'user-select': 'none',
 		'user-drag': 'none',
 		'touch-callout': 'none'
 	});
-	$el.setAttribute('unselectable', 'on');
-	$el.addEventListener('selectstart', pd);
+	el.setAttribute('unselectable', 'on');
+	el.addEventListener('selectstart', pd);
 };
-exports.enable = function($el){
-	css($el, {
+exports.enable = function(el){
+	css(el, {
 		'user-select': null,
 		'user-drag': null,
 		'touch-callout': null
 	});
-	$el.removeAttribute('unselectable');
-	$el.removeEventListener('selectstart', pd);
+	el.removeAttribute('unselectable');
+	el.removeEventListener('selectstart', pd);
 };
 
 
