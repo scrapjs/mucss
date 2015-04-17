@@ -5,6 +5,7 @@
  *
  */
 var win = window;
+var doc = document;
 var Rect = require('./Rect');
 var hasScroll = require('./has-scroll');
 var scrollbar = require('./scrollbar');
@@ -16,7 +17,9 @@ var isFixedEl = require('./is-fixed');
  * @param    {Element|window}   el   A target. Pass window to calculate viewport offsets
  * @return   {Object}   Offsets object with trbl.
  */
-module.exports = function(el){
+module.exports = offsets;
+
+function offsets (el) {
 	if (!el) throw Error('Bad argument');
 
 	//calc client rect
@@ -35,6 +38,11 @@ module.exports = function(el){
 		result.bottom = result.top + result.height;
 
 		return result;
+	}
+
+	//return absolute offsets if document requested
+	else if (el === doc) {
+		return offsets(doc.documentElement);
 	}
 
 	//FIXME: why not every element has getBoundingClientRect method?
