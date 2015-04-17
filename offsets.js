@@ -42,7 +42,10 @@ function offsets (el) {
 
 	//return absolute offsets if document requested
 	else if (el === doc) {
-		return offsets(doc.documentElement);
+		var res = offsets(doc.documentElement);
+		res.bottom = Math.max(window.innerHeight, res.bottom);
+		res.right = Math.max(window.innerWidth, res.right);
+		return res;
 	}
 
 	//FIXME: why not every element has getBoundingClientRect method?
