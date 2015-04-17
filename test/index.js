@@ -111,6 +111,10 @@ describe('mucss', function () {
 		assert.equal(css.isFixed(window), true);
 	});
 
+	it('has-scroll', function () {
+		assert.notOk(css.hasScroll.x(document.documentElement));
+	});
+
 	it('z-index', function () {
 		var a = document.createElement('div');
 		css(a, 'z-index', 1);

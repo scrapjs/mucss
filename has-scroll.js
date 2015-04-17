@@ -4,8 +4,8 @@
  * @module mucss/has-scroll
  */
 exports.x = function(){
-	return win.innerHeight > root.clientHeight;
+	return window.innerHeight > document.documentElement.clientHeight;
 };
 exports.y = function(){
-	return win.innerWidth > root.clientWidth;
+	return window.innerWidth > document.documentElement.clientWidth;
 };
