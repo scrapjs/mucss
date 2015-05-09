@@ -15,10 +15,10 @@ style.overflow = 'scroll';
 style.position = 'absolute';
 style.top = '-9999px';
 
-document.body.appendChild(scrollDiv);
+document.documentElement.appendChild(scrollDiv);
 
 // the scrollbar width
 module.exports = scrollDiv.offsetWidth - scrollDiv.clientWidth;
 
 // Delete fake DIV
-document.body.removeChild(scrollDiv);
+document.documentElement.removeChild(scrollDiv);
