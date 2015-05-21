@@ -69,5 +69,8 @@ Whether element is in the viewport.
 ### `getTranslate(el)`
 Parse translate3d property of an element, if any.
 
+### `windowScroll()`
+Get window x and y scroll position
+
 
 [![NPM](https://nodei.co/npm/mucss.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/mucss/)
