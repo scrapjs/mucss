@@ -24,7 +24,6 @@ css.hasScrollX = css.hasScroll.x;
 css.hasScrollY = css.hasScroll.y;
 css.Rect = require('./Rect');
 css.getTranslate = require('./translate');
-css.windowScroll = require('./window-scroll');
 
 
 /**
