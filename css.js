@@ -4,7 +4,7 @@
  * @module  mucss/css
  */
 var fakeStyle = require('./fake-element').style;
-var prefix = require('./prefix').dom;
+var prefix = require('./prefix').lowercase;
 
 
 /**
