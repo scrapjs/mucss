@@ -22,13 +22,13 @@ describe('mucss', function () {
 		assert.ok(!a.getAttribute('unselectable'));
 	});
 
-	it("paddings", function () {
+	it("padding", function () {
 		var a = document.createElement('a');
 		a.style.padding = '10px 20px';
 		document.body.appendChild(a);
 
-		var paddings = css.paddings(a);
-		assert.deepEqual(paddings, {
+		var padding = css.padding(a);
+		assert.deepEqual(padding, {
 			top: 10,
 			bottom: 10,
 			left: 20,
@@ -36,13 +36,13 @@ describe('mucss', function () {
 		});
 	});
 
-	it("margins", function () {
+	it("margin", function () {
 		var a = document.createElement('a');
 		a.style.margin = '10px 20px';
 		document.body.appendChild(a);
 
-		var margins = css.margins(a);
-		assert.deepEqual(margins, {
+		var margin = css.margin(a);
+		assert.deepEqual(margin, {
 			top: 10,
 			bottom: 10,
 			left: 20,
@@ -50,7 +50,7 @@ describe('mucss', function () {
 		});
 	});
 
-	it("offsets", function () {
+	it("offset", function () {
 		var a = document.createElement('a');
 
 		css(a, {
@@ -65,11 +65,11 @@ describe('mucss', function () {
 		document.body.appendChild(a);
 		var r = a.getBoundingClientRect();
 
-		var offsets = css.offsets(a);
-		assert.equal(offsets.top, 210);
-		assert.equal(offsets.left, 310);
-		assert.equal(offsets.bottom, 530);
-		assert.equal(offsets.right, 1130);
+		var offset = css.offset(a);
+		assert.equal(offset.top, 210);
+		assert.equal(offset.left, 310);
+		assert.equal(offset.bottom, 530);
+		assert.equal(offset.right, 1130);
 	});
 
 	it("parseValue", function () {
