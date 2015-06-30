@@ -21,7 +21,7 @@ var getTranslate = require('./translate');
  */
 module.exports = offsets;
 
-function offsets (el, includeTranslate) {
+function offsets (el) {
 	if (!el) throw Error('Bad argument');
 
 	//calc client rect
@@ -75,14 +75,6 @@ function offsets (el, includeTranslate) {
 		el.offsetWidth,
 		el.offsetHeight
 	);
-
-	if (includeTranslate) {
-		var translate = getTranslate(el);
-		result.left += translate[0];
-		result.right += translate[0];
-		result.top += translate[1];
-		result.bottom += translate[1];
-	}
 
 	return result;
 };

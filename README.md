@@ -31,8 +31,8 @@ Apply set of css rules to the element, automatically prefixed. Numbers are autom
 ### `css(el, 'transform')`
 Get style property value, properly prefixed.
 
-### `offsets(el, includeTranslate?)`
-Get absolute offsets relative to the document, including `position: fixed` detection. If `includeTranslate` passed - include translate3d/translate offset.
+### `offsets(el)`
+Get absolute offsets relative to the document, including `position: fixed` detection.
 
 ### `paddings(el)`
 Get element paddings.

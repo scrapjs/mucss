@@ -15,7 +15,7 @@ module.exports = function (el) {
 	//FIXME: handle nested calcs
 	var match = /translate(?:3d)?\s*\(([^\)]*)\)/.exec(translateStr);
 
-	if (!match) return null;
+	if (!match) return [0, 0];
 	var values = match[1].split(/\s*,\s*/);
 
 	//parse values
