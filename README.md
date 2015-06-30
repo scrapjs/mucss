@@ -2,9 +2,7 @@
 
 CSS utils for lightweight components development.
 
-```
-$ npm install mucss
-```
+[![npm install mucss](https://nodei.co/npm/mucss.png?mini=true)](https://npmjs.org/package/mucss)
 
 Include the whole lib:
 
@@ -33,8 +31,8 @@ Apply set of css rules to the element, automatically prefixed. Numbers are autom
 ### `css(el, 'transform')`
 Get style property value, properly prefixed.
 
-### `offsets(el)`
-Get absolute offsets relative to the document, including `position: fixed` detection.
+### `offsets(el, includeTranslate?)`
+Get absolute offsets relative to the document, including `position: fixed` detection. If `includeTranslate` passed - include translate3d/translate offset.
 
 ### `paddings(el)`
 Get element paddings.

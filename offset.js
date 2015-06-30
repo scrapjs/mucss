@@ -10,6 +10,8 @@ var Rect = require('./Rect');
 var hasScroll = require('./has-scroll');
 var scrollbar = require('./scrollbar');
 var isFixedEl = require('./is-fixed');
+var getTranslate = require('./translate');
+
 
 /**
  * Return absolute offsets of any target passed
@@ -19,7 +21,7 @@ var isFixedEl = require('./is-fixed');
  */
 module.exports = offsets;
 
-function offsets (el) {
+function offsets (el, includeTranslate) {
 	if (!el) throw Error('Bad argument');
 
 	//calc client rect
@@ -73,6 +75,14 @@ function offsets (el) {
 		el.offsetWidth,
 		el.offsetHeight
 	);
+
+	if (includeTranslate) {
+		var translate = getTranslate(el);
+		result.left += translate[0];
+		result.right += translate[0];
+		result.top += translate[1];
+		result.bottom += translate[1];
+	}
 
 	return result;
 };
