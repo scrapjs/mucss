@@ -3,6 +3,8 @@
  *
  * @module mucss/has-scroll
  */
+
+//TODO: detect any element scroll, not only the window
 exports.x = function () {
 	return window.innerHeight > document.documentElement.clientHeight;
 };
