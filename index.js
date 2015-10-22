@@ -4,7 +4,7 @@
  * It is wiser to include only needed submodules though.
  * See submodules for details.
  *
- * @module mucss.
+ * @module mucss
  */
 
 var css = require('./css');
@@ -22,11 +22,9 @@ css.scrollbar = require('./scrollbar');
 css.hasScroll = require('./has-scroll');
 css.hasScrollX = css.hasScroll.x;
 css.hasScrollY = css.hasScroll.y;
-css.Rect = require('./Rect');
+css.Rect = require('./rect');
 css.getTranslate = require('./translate');
+css.isInViewport = require('./is-in-viewport');
 
 
-/**
- * @module mucss
- */
 module.exports = css;

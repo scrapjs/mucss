@@ -4,20 +4,20 @@
  * @module mucss/borders
  */
 
-var Rect = require('./Rect');
+var Rect = require('./rect');
 var parse = require('./parse-value');
 
 /**
  * Return border widths of an element
  */
 module.exports = function(el){
-	if (el === window) return new Rect;
+	if (el === window) return Rect();
 
 	if (!(el instanceof Element)) throw Error('Argument is not an element');
 
 	var style = window.getComputedStyle(el);
 
-	return new Rect(
+	return Rect(
 		parse(style.borderLeftWidth),
 		parse(style.borderTopWidth),
 		parse(style.borderRightWidth),

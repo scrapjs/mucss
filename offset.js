@@ -6,7 +6,7 @@
  */
 var win = window;
 var doc = document;
-var Rect = require('./Rect');
+var Rect = require('./rect');
 var hasScroll = require('./has-scroll');
 var scrollbar = require('./scrollbar');
 var isFixedEl = require('./is-fixed');
@@ -29,7 +29,7 @@ function offsets (el) {
 
 	//return vp offsets
 	if (el === win) {
-		result = new Rect(
+		result = Rect(
 			win.pageXOffset,
 			win.pageYOffset
 		);
@@ -56,7 +56,7 @@ function offsets (el) {
 	try {
 		cRect = el.getBoundingClientRect();
 	} catch (e) {
-		cRect = new Rect(
+		cRect = Rect(
 			el.clientLeft,
 			el.clientTop
 		);
@@ -67,13 +67,11 @@ function offsets (el) {
 	var xOffset = isFixed ? 0 : win.pageXOffset;
 	var yOffset = isFixed ? 0 : win.pageYOffset;
 
-	result = new Rect(
+	result = Rect(
 		cRect.left + xOffset,
 		cRect.top + yOffset,
 		cRect.left + xOffset + el.offsetWidth,
-		cRect.top + yOffset + el.offsetHeight,
-		el.offsetWidth,
-		el.offsetHeight
+		cRect.top + yOffset + el.offsetHeight
 	);
 
 	return result;

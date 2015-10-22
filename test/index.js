@@ -32,7 +32,9 @@ describe('mucss', function () {
 			top: 10,
 			bottom: 10,
 			left: 20,
-			right: 20
+			right: 20,
+			height: 0,
+			width: 0
 		});
 	});
 
@@ -46,7 +48,9 @@ describe('mucss', function () {
 			top: 10,
 			bottom: 10,
 			left: 20,
-			right: 20
+			right: 20,
+			width: 0,
+			height: 0
 		});
 	});
 

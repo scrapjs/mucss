@@ -2,22 +2,22 @@
  * Simple rect constructor.
  * It is just faster and smaller than constructing an object.
  *
- * @module mucss/Rect
+ * @module mucss/rect
  *
  * @param {number} l left
  * @param {number} t top
  * @param {number} r right
  * @param {number} b bottom
- * @param {number}? w width
- * @param {number}? h height
  *
  * @return {Rect} A rectangle object
  */
-module.exports = function Rect (l,t,r,b,w,h) {
-	this.top=t||0;
-	this.bottom=b||0;
+module.exports = function Rect (l,t,r,b) {
+	if (!(this instanceof Rect)) return new Rect(l,t,r,b);
+
 	this.left=l||0;
+	this.top=t||0;
 	this.right=r||0;
-	if (w!==undefined) this.width=w||this.right-this.left;
-	if (h!==undefined) this.height=h||this.bottom-this.top;
+	this.bottom=b||0;
+	this.width=this.left - this.right;
+	this.height=this.bottom - this.top;
 };
