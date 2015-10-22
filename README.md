@@ -4,18 +4,16 @@ CSS utils for lightweight components development.
 
 [![npm install mucss](https://nodei.co/npm/mucss.png?mini=true)](https://npmjs.org/package/mucss)
 
-Include the whole lib:
-
 ```js
 //include all css methods
 var css = require('mucss');
 
 //or include only submodules
 var offset = require('mucss/offset');
+var padding = require('mucss/padding');
 
-//Apply set of css rules to the element, automatically prefixed.
+//Apply set of css rules to an element, automatically prefixed.
 //Numbers are automatically converted to `px`.
-//The same as `$.css` in jQuery.
 css(el, { transform: 'translate3d(10px,10px,0)' });
 
 //Get style property value, properly prefixed.
