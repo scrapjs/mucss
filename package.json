@@ -1,6 +1,6 @@
 {
   "name": "mucss",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "μCSS — vital CSS utils",
   "main": "index.js",
   "directories": {
