@@ -18,6 +18,6 @@ module.exports = function Rect (l,t,r,b) {
 	this.top=t||0;
 	this.right=r||0;
 	this.bottom=b||0;
-	this.width=this.left - this.right;
-	this.height=this.bottom - this.top;
+	this.width=Math.abs(this.right - this.left);
+	this.height=Math.abs(this.bottom - this.top);
 };

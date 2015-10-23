@@ -138,4 +138,10 @@ describe('mucss', function () {
 		var res = css.getTranslate(a);
 		assert.deepEqual(res, [12, 4]);
 	});
+
+	it('rect', function () {
+		var rect = css.Rect(10, 20, 20, 30);
+		assert.equal(rect.width, 10);
+		assert.equal(rect.height, 10);
+	});
 });
