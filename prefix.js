@@ -6,6 +6,12 @@
 
 var styles = getComputedStyle(document.documentElement, '');
 
+if (!styles) {
+	module.exports = {
+		dom: '', lowercase: '', css: '', js: ''
+	};
+}
+
 var pre = (Array.prototype.slice.call(styles)
 	.join('')
 	.match(/-(moz|webkit|ms)-/) || (styles.OLink === '' && ['', 'o'])
