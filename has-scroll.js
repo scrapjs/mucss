@@ -6,8 +6,8 @@
 
 //TODO: detect any element scroll, not only the window
 exports.x = function () {
-	return window.innerHeight > document.body.scrollHeight;
+	return window.innerHeight > document.documentElement.clientHeight;
 };
 exports.y = function () {
-	return window.innerWidth > document.body.scrollHeight;
+	return window.innerWidth > document.documentElement.clientWidth;
 };
