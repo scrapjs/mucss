@@ -47,6 +47,8 @@ function offsets (el) {
 		var res = offsets(doc.documentElement);
 		res.bottom = Math.max(window.innerHeight, res.bottom);
 		res.right = Math.max(window.innerWidth, res.right);
+		res.height = Math.max(window.innerHeight, res.height);
+		res.width = Math.max(window.innerHeight, res.width);
 		if (hasScroll.y(doc.documentElement)) res.right -= scrollbar;
 		if (hasScroll.x(doc.documentElement)) res.bottom -= scrollbar;
 		return res;
